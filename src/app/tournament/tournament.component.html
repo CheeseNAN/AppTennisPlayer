@@ -1,0 +1,39 @@
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Prize Money</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of tournaments" (click)="onClick(t)" >
+      <td>{{ t.city }}</td>
+      <td>{{ t.prize_money }}</td>
+      <td>{{ t.description }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<form [formGroup]="tournForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label
+      >City :
+      <input placeholder="city" formControlName="city" />
+    </label>
+    <div class="error-msg" *ngIf="shouldShowError('city')">Required</div>
+  </div>
+  <div>
+    <label>
+      Prize Money :
+      <input placeholder="prize_money" formControlName="prize_money" />
+    </label>
+    <div class="error-msg" *ngIf="shouldShowError('prize_money')">Must be a number larger than 5000</div>
+  </div>
+  <label>
+    Description :
+    <input placeholder="description" formControlName="description" />
+  </label>
+  <button type="submit" [disabled]="!tournForm.valid">Submit</button>
+  <button *ngIf="editingPrev" (click)="onCancel()">Cancel</button>
+</form>

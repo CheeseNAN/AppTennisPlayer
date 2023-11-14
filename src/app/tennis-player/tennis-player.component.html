@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let p of players">Salut {{p.firstName}} {{p.lastName}}, tu as le classement n°{{p.rank}}. id: {{ p.id}}</li>
+</ul>
+
+<input [(ngModel)]="player.firstName" type="text" placeholder="first name">
+<input [(ngModel)]="player.lastName" type="text" placeholder="last name">
+<input [(ngModel)]="player.rank" type="text" placeholder="rank">
+
+<button (click)="onClick()">Ajouter le joueur</button>
